@@ -30,6 +30,12 @@ jobs:
         run: |
           brew install cmake
           brew install ninja
+          
+      - name: Cache build
+        uses: actions/cache@v4
+        with:
+          path: build
+          key: intel-mac
       
       - name: Build
         shell: bash
