@@ -50,5 +50,5 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ env.GIT_REF }}-intel
+          name: Intel - ${{ env.GIT_REF }}
           files: build/Hikari_LLVM19.0.0git_Intel-Mac.tar.gz
