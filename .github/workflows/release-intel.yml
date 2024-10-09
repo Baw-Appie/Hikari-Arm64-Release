@@ -16,9 +16,10 @@ jobs:
           ref: "arm64e-upstream-next-hikari"
           submodules: "recursive"
 
-      - name: Setup GIT_REF
+      - name: Setup Environment
         run: |
           echo "GIT_REF=$(git rev-parse HEAD)" >> $GITHUB_ENV
+          echo "TAG_NAME=IntelMac_$(date +"%Y.%m.%d_%H-%M")" >> $GITHUB_ENV
 
       - name: Setup python
         uses: actions/setup-python@v5
@@ -56,5 +57,6 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ env.TAG_NAME }}
           name: Intel Mac - ${{ env.GIT_REF }}
           files: build/Hikari_LLVM19.0.0git_Intel-Mac.tar.gz
